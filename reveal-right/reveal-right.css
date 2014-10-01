@@ -1,0 +1,192 @@
+/* Colours */
+/* ==========================================================================
+   Reveal from right
+   ========================================================================== */
+/* Menu link */
+.nav-toggle {
+  cursor: pointer;
+  color: #606c6c;
+  background-repeat: no-repeat;
+  background-position: top right;
+  font-size: .625em;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 3.375em 0 0;
+  -webkit-tap-highlight-color: transparent;
+  width: 3.3em;
+  word-wrap: normal;
+  overflow-wrap: normal;
+}
+@media screen and (min-width: 19.25em) {
+  .nav-toggle {
+    position: absolute;
+    top: 1.5em;
+    right: 0;
+  }
+}
+@media screen and (min-width: 50em) {
+  .nav-toggle {
+    display: none;
+  }
+}
+.nav-toggle:hover, .nav-toggle:focus {
+  color: #f27a7a;
+}
+
+/* Off canvas enhancement */
+.js-mustard .off-canvas-container {
+  position: relative;
+}
+.js-mustard .off-canvas-body {
+  background-color: #fff;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  -o-transition: -o-transform 0.5s ease;
+  transition: transform 0.5s ease;
+}
+.js-mustard .off-canvas-body.is-open {
+  -webkit-transform: translate3d(-18.75em, 0, 0);
+  -o-transform: translateX(-18.75em);
+  transform: translate3d(-18.75em, 0, 0);
+}
+.js-mustard .nav-main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  width: 18.75em;
+  max-width: 100%;
+}
+.js-mustard .nav-main.is-active {
+  z-index: 2;
+}
+
+/* Defaults and wider viewports */
+.nav-main,
+.js-mustard .nav-main {
+  background: #373d3d;
+}
+.nav-main__list,
+.js-mustard .nav-main__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-main__item,
+.js-mustard .nav-main__item {
+  margin-left: 0;
+}
+.nav-main__item a,
+.js-mustard .nav-main__item a {
+  color: #fff;
+  outline: none;
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: 1em;
+  display: block;
+  -webkit-transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.nav-main__item a:hover, .nav-main__item a:focus,
+.js-mustard .nav-main__item a:hover,
+.js-mustard .nav-main__item a:focus {
+  background: #f27a7a;
+  box-shadow: inset 0 -1px transparent;
+  color: #fff;
+}
+.nav-main__item:first-child a,
+.js-mustard .nav-main__item:first-child a {
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2), inset 0 1px rgba(0, 0, 0, 0.2);
+}
+@media screen and (min-width: 50em) {
+  .nav-main,
+  .js-mustard .nav-main {
+    background: none;
+    text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+  }
+  .nav-main__list,
+  .js-mustard .nav-main__list {
+    width: 88%;
+    margin: 0 auto;
+  }
+  .nav-main__item,
+  .js-mustard .nav-main__item {
+    font-size: 1em;
+    display: inline-block;
+  }
+  .nav-main__item:first-child,
+  .js-mustard .nav-main__item:first-child {
+    display: none;
+  }
+  .nav-main__item:after,
+  .js-mustard .nav-main__item:after {
+    content: '/';
+    color: #ccc;
+    padding: 0 1em;
+    font-weight: 300;
+  }
+  .nav-main__item:last-child:after,
+  .js-mustard .nav-main__item:last-child:after {
+    display: none;
+  }
+  .nav-main__item a,
+  .js-mustard .nav-main__item a {
+    color: #606c6c;
+    text-shadow: none;
+    box-shadow: none;
+    padding: 0;
+    display: inline;
+    -webkit-transition: none;
+    transition: none;
+  }
+  .nav-main__item a:hover, .nav-main__item a:focus,
+  .js-mustard .nav-main__item a:hover,
+  .js-mustard .nav-main__item a:focus {
+    color: #f27a7a;
+    background: none;
+  }
+}
+@media screen and (min-width: 60em) {
+  .nav-main__item,
+  .js-mustard .nav-main__item {
+    font-size: 1.25em;
+  }
+}
+
+/* Close button */
+.nav-close {
+  background-color: #fff;
+  background-position: center center;
+  box-sizing: content-box;
+  border: none;
+  padding: 0.5625em;
+  width: 1.625em;
+  height: 1.625em;
+  position: absolute;
+  z-index: 3;
+  right: 0.4375em;
+  top: 0.4375em;
+  -moz-transition: all ease 0.3s 1s ease-in-out;
+  -o-transition: all ease 0.3s 1s ease-in-out;
+  -webkit-transition: all ease 0.3s 1s ease-in-out;
+  -ms-transition: all ease 0.3s 1s ease-in-out;
+  transition: all ease 0.3s 1s ease-in-out;
+  opacity: 0.5;
+}
+.nav-close__text {
+  font-size: 0;
+  height: 1px;
+  overflow: hidden;
+  display: block;
+}
+.nav-close:hover, .nav-close:focus {
+  opacity: 1;
+  outline: none;
+}

@@ -1,0 +1,249 @@
+$fix-mqs: false !default;
+
+@mixin respond-min($width) {
+	// If we're outputting for a fixed media query set...
+	@if $fix-mqs {
+		// ...and if we should apply these rules...
+		@if $fix-mqs >= $width {
+			// ...output the content the user gave us.
+			@content;
+		}
+	}
+	@else {
+		// Otherwise, output it using a regular media query
+		@media screen and (min-width: $width) {
+			@content;
+		}
+	}
+}
+// I also have a respond-max mixin, that does what you might expect
+
+$old-ie: false !default;
+
+@mixin old-ie {
+	// Only use this content if we're dealing with old IE
+	@if $old-ie {
+		@content;
+	}
+}
+
+$really-old-ie: false !default;
+
+@mixin really-old-ie {
+	// Only use this content if we're dealing with lte IE6
+	@if $really-old-ie {
+		@content;
+	}
+}
+
+@mixin transition($what: all, $length: 1s, $easing: ease-in-out) {
+  -moz-transition:    $what $length $easing;
+  -o-transition:      $what $length $easing;
+  -webkit-transition: $what $length $easing;
+  -ms-transition:     $what $length $easing;
+  transition:         $what $length $easing;
+}
+
+ /* Colours */
+ $grey: rgba(55,61,61,1);
+ $lightgrey: rgba(96,108,108,1);
+ // $lightgrey: rgba(138,153,154,1);
+ $red: rgba(242,122,122,1);
+ $lightblue: rgba(241,250,250,1);
+ $blue: rgba(54,157,222,1);
+
+/* ==========================================================================
+   Reveal from right
+   ========================================================================== */
+
+/* Menu link */
+.nav-toggle {
+	cursor: pointer;
+	color: $lightgrey;
+	background-repeat: no-repeat;
+	background-position: top right;
+	font-size: .625em;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 3.375em 0 0;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	width: 3.3em;
+	word-wrap: normal;
+	overflow-wrap: normal;
+
+	@include respond-min(19.25em) {
+		position: absolute;
+		top: 1.5em;
+		right: 0;
+	}
+
+	@include respond-min(50em) {
+		display: none;
+	}
+
+	&:hover,
+	&:focus {
+		color: $red;
+	}
+}
+
+/* Off canvas enhancement */
+.js-mustard {
+	.off-canvas-container {
+		position: relative;
+	}
+
+	.off-canvas-body {
+		background-color: #fff;
+		-webkit-transition: -webkit-transform 0.5s ease;
+		-o-transition: -o-transform 0.5s ease;
+		transition: transform 0.5s ease;
+
+		&.is-open {
+			-webkit-transform: translate3d(-18.75em,0,0);
+			-o-transform: translateX(-18.75em);
+			transform: translate3d(-18.75em,0,0);
+		}
+	}
+
+	.nav-main {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+		width: 18.75em;
+		max-width: 100%;
+
+		&.is-active {
+			z-index: 2;
+		}
+	}
+}
+
+/* Defaults and wider viewports */
+.nav-main,
+.js-mustard .nav-main {
+	background: $grey;
+
+	&__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&__item {
+		margin-left: 0;
+
+		a {
+			color: #fff;
+			outline: none;
+			box-shadow: inset 0 -1px rgba(0,0,0,0.2);
+			text-shadow: 0 0 1px rgba(255,255,255,0.1);
+			padding: 1em;
+			display: block;
+			-webkit-transition: background 0.3s, box-shadow 0.3s;
+			transition: background 0.3s, box-shadow 0.3s;
+
+			&:hover,
+			&:focus {
+				background: $red;
+				box-shadow: inset 0 -1px rgba(0,0,0,0);
+				color: #fff;
+			}
+		}
+
+		&:first-child a {
+			box-shadow: inset 0 -1px rgba(0,0,0,0.2), inset 0 1px rgba(0,0,0,0.2);
+		}
+	}
+
+	@include respond-min(50em) {
+		background: none;
+		text-align: right;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: auto;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+
+		&__list {
+			width: 88%;
+			margin: 0 auto;
+		}
+
+		&__item {
+			font-size: 1em;
+			display: inline-block;
+
+			&:first-child {
+				display: none;
+			}
+
+			&:after {
+				content: '/';
+				color: #ccc;
+				padding: 0 1em;
+				font-weight: 300;
+			}
+
+			&:last-child:after {
+				display: none;
+			}
+
+			a {
+				color: $lightgrey;
+				text-shadow: none;
+				box-shadow: none;
+				padding: 0;
+				display: inline;
+				-webkit-transition: none;
+				transition: none;
+
+				&:hover,
+				&:focus {
+					color: $red;
+					background: none;
+				}
+			}
+		}
+	}
+
+	@include respond-min(60em) {
+		&__item {
+			font-size: 1.25em;
+		}
+	}
+}
+
+/* Close button */
+.nav-close {
+	background-color: #fff;
+	background-position: center center;
+	box-sizing: content-box;
+	border: none;
+	padding: 0.5625em;
+	width: 1.625em;
+	height: 1.625em;
+	position: absolute;
+	z-index: 3;
+	right: 0.4375em;
+	top: 0.4375em;
+	@include transition(all ease 0.3s);
+	opacity: 0.5;
+
+	&__text {
+		font-size: 0;
+		height: 1px;
+		overflow: hidden;
+		display: block;
+	}
+
+	&:hover,
+	&:focus {
+		opacity: 1;
+		outline: none;
+	}
+}
